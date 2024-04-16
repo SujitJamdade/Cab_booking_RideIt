@@ -1,8 +1,12 @@
-package model;
+package com.example.RideIt.model;
 
+import com.example.RideIt.Enum.Gender;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -26,4 +30,7 @@ public class Customer {
     String address;
     @Enumerated(EnumType.STRING)
     Gender gender;
+
+    @OneToMany(mappedBy = "customer")
+    List<TripBooking> bookings = new ArrayList<>();
 }

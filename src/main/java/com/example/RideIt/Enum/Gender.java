@@ -1,4 +1,4 @@
-package Enum;
+package com.example.RideIt.Enum;
 
 public enum Gender {
 

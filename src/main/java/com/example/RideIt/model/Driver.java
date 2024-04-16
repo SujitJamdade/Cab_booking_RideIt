@@ -1,4 +1,4 @@
-package model;
+package com.example.RideIt.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -24,4 +24,8 @@ public class Driver {
     String mobNo;
 
     double rating;
+
+    @OneToOne
+    @JoinColumn
+    Cab cab;
 }

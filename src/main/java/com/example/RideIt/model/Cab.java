@@ -1,6 +1,6 @@
-package model;
+package com.example.RideIt.model;
 
-
+import com.example.RideIt.Enum.CarType;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -11,6 +11,7 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
+
 public class Cab {
 
     @Id
@@ -18,11 +19,12 @@ public class Cab {
     int id;
     String company;
     String carModel;
-    @Enumerated(EnumType.ORDINAL.STRING)
+    @Enumerated(EnumType.STRING)
     CarType carType;
     int numberOfSeats;
     double farePerKm;
 
+    @OneToOne(mappedBy = "driver")
     Driver driver;
 
 }

@@ -1,9 +1,7 @@
-package model;
+package com.example.RideIt.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.RideIt.Enum.TripStatus;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.CreationTimestamp;
@@ -21,8 +19,8 @@ import java.util.Date;
 public class TripBooking {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    String id;
 
     String source;
     String destination;
@@ -34,4 +32,8 @@ public class TripBooking {
 
     @CreationTimestamp
     Date bookedAt;
+
+    @ManyToOne
+    @JoinColumn
+    Customer customer;
 }
