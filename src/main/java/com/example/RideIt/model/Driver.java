@@ -1,8 +1,12 @@
 package com.example.RideIt.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -25,7 +29,11 @@ public class Driver {
 
     double rating;
 
-    @OneToOne
-    @JoinColumn
+    @OneToOne(mappedBy = "driver", cascade = CascadeType.ALL)
+    @JsonIgnore
     Cab cab;
+
+    @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL)
+    List<TripBooking> booking = new ArrayList<>();
+
 }

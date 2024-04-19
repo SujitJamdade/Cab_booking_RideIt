@@ -31,6 +31,6 @@ public class Customer {
     @Enumerated(EnumType.STRING)
     Gender gender;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer" , cascade = CascadeType.ALL)
     List<TripBooking> bookings = new ArrayList<>();
 }
