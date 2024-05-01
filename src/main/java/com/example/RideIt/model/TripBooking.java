@@ -36,4 +36,8 @@ public class TripBooking {
     @ManyToOne
     @JoinColumn
     Customer customer;
+
+    @ManyToOne
+    @JoinColumn
+    Driver driver;
 }
