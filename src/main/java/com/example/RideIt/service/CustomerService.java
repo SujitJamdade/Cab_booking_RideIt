@@ -17,13 +17,23 @@ public class CustomerService {
     public String addCustomer(CustomerRequest customerRequest) {
 
         // dto >> entity
-        Customer customer = new Customer();
+//        Customer customer = new Customer();
+//
+//        customer.setName(customerRequest.getName());
+//        customer.setAge(customerRequest.getAge());
+//        customer.setEmailId(customerRequest.getEmailId());
+//        customer.setAddress(customerRequest.getAddress());
+//        customer.setGender(customerRequest.getGender());
 
-        customer.setName(customerRequest.getName());
-        customer.setAge(customerRequest.getAge());
-        customer.setEmailId(customerRequest.getEmailId());
-        customer.setAddress(customerRequest.getAddress());
-        customer.setGender(customerRequest.getGender());
+        // Using Builder to create entity
+
+        Customer customer = Customer.builder()
+                .name(customerRequest.getName())
+                .age(customerRequest.getAge())
+                .emailId(customerRequest.getEmailId())
+                .address(customerRequest.getAddress())
+                .gender(customerRequest.getGender())
+                .build();
 
         customerRepository.save((customer));
 

@@ -18,6 +18,7 @@ public class Cab {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     String company;
+    String cabNo;
     String carModel;
     @Enumerated(EnumType.STRING)
     CarType carType;

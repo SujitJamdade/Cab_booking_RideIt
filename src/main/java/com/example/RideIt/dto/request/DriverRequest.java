@@ -1,7 +1,6 @@
 package com.example.RideIt.dto.request;
 
-
-import com.example.RideIt.Enum.Gender;
+import jakarta.persistence.Column;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -10,11 +9,17 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CustomerRequest {
+public class DriverRequest {
+
+    int id;
 
     String name;
+
     int age;
-    String emailId;
-    String address;
-    Gender gender;
+
+    String panNumber;
+
+    String mobNo;
+
+    CabRequest cab;
 }
