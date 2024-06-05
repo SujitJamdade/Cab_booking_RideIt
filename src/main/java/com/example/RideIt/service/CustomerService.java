@@ -4,6 +4,7 @@ import com.example.RideIt.dto.request.CustomerRequest;
 import com.example.RideIt.dto.response.CustomerResponse;
 import com.example.RideIt.model.Customer;
 import com.example.RideIt.repository.CustomerRepository;
+import com.example.RideIt.transformer.CustomerTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,7 @@ public class CustomerService {
 
     @Autowired
     CustomerRepository customerRepository;
-    public String addCustomer(CustomerRequest customerRequest) {
+    public CustomerResponse addCustomer(CustomerRequest customerRequest) {
 
         // dto >> entity
 //        Customer customer = new Customer();
@@ -27,17 +28,20 @@ public class CustomerService {
 
         // Using Builder to create entity
 
-        Customer customer = Customer.builder()
-                .name(customerRequest.getName())
-                .age(customerRequest.getAge())
-                .emailId(customerRequest.getEmailId())
-                .address(customerRequest.getAddress())
-                .gender(customerRequest.getGender())
-                .build();
+//        Customer customer = Customer.builder()
+//                .name(customerRequest.getName())
+//                .age(customerRequest.getAge())
+//                .emailId(customerRequest.getEmailId())
+//                .address(customerRequest.getAddress())
+//                .gender(customerRequest.getGender())
+//                .build();
 
-        customerRepository.save((customer));
+        // Using Transformer request
+        Customer customer = CustomerTransformer.customerRequestToCustomer(customerRequest);
+        // Save the customer
+        Customer savedCustomer = customerRepository.save(customer);
 
-        return "Customer saved successfully";
+        return CustomerTransformer.customerToCustomerResponse(savedCustomer);
     }
 
     public Customer getCustomerById(Integer id) throws Exception{

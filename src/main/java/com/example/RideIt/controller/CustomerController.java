@@ -16,9 +16,9 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
     @PostMapping
-    public ResponseEntity<String> addCustomer(@RequestBody CustomerRequest customerRequest){
+    public CustomerResponse addCustomer(@RequestBody CustomerRequest customerRequest){
 
-        String response = customerService.addCustomer(customerRequest);
+        CustomerResponse response = customerService.addCustomer(customerRequest);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
