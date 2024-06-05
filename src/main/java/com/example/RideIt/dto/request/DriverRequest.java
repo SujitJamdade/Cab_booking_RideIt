@@ -1,6 +1,5 @@
 package com.example.RideIt.dto.request;
 
-import jakarta.persistence.Column;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 

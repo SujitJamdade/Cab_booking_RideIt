@@ -1,16 +1,23 @@
 package com.example.RideIt.controller;
 
 import com.example.RideIt.dto.request.DriverRequest;
+import com.example.RideIt.service.DriverService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/driver")
 public class DriverController {
 
+    @Autowired
+    DriverService driverService;
+
+    @PostMapping
     public ResponseEntity<String> addDriver(@RequestBody DriverRequest driverRequest){
-        return null;
+        String response = driverService.addDriver(driverRequest);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
